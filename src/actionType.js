@@ -1,0 +1,9 @@
+const ActionType = {
+    ADD: 'ADD',
+    SUBSTRACT: 'SUBSTRACT',
+    FETCHDATA: 'FETCHDATA',
+    FETCHDATASUCCESS: 'FETCHDATASUCCESS',
+    INPUTCHANGE: 'INPUTCHANGE'
+}
+
+module.exports = ActionType;
