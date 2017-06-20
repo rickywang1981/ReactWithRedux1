@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import action from './action';
+import LogListUIBuilder from './Log/LogListUIBuilder';
 
 const App = ({
     state: {
         sum,
         inputVal,
-        data
+        data,
+        actionLogItems
     },
     addClicked,
     subClicked,
+    logItemClicked,
     handleInputChange,
     fetchData
 }) => {
@@ -21,6 +24,8 @@ const App = ({
                 <button onClick={() => subClicked(inputVal)}>-</button>
                 <span> = {sum}</span>
             </div>
+            
+            <LogListUIBuilder actionLogItems={actionLogItems} logItemClicked={logItemClicked} />
             
             <div>
                 <button onClick={fetchData}>Fetch data with async action.</button>
@@ -37,6 +42,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     addClicked: (val) => dispatch(action.add(val)),
     subClicked: (val) => dispatch(action.substract(val)),
+    logItemClicked: (index) => dispatch(action.revert(index)),
     handleInputChange: (val) => dispatch(action.inputChange(val)),
     fetchData: () => dispatch(action.fetchData())
 });
